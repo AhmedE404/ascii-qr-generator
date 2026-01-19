@@ -35,13 +35,21 @@
         pre#qr-ascii {
             background:white;
             color:black;
-            font-family: 'Courier New', monospace;
-            /* line-height: 1.1; */
+            /* font-family: 'Roboto Mono', 'Droid Sans Mono', SFMono-Regular, Consolas, monospace; */
+            /* font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+            font-family: 'Roboto Mono', 'Droid Sans Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            line-height: 1.1;
             font-size: clamp(8px, 2vw, 14px); 
             overflow-x: auto;        
             max-width: 100%;
             white-space: pre;
             display: none; /* Hidden by default */
+        }
+
+        pre#qr-ascii span {
+            display: inline-block;
+            width: 1ch;
+            text-align: center;
         }
 
         /* SVG Style */
@@ -130,19 +138,24 @@
             document.getElementById('qr-ascii').classList.add('active-view');
 
             const count = qr.getModuleCount();
-            let ascii = "";
+            let asciiDisplay = "";
+
             for (let y = 0; y < count; y += 2) {
+                let line = "";
                 for (let x = 0; x < count; x++) {
                     const top = qr.isDark(y, x);
                     const bottom = (y + 1 < count) ? qr.isDark(y + 1, x) : false;
-                    if (top && bottom) ascii += "█";
-                    else if (top) ascii += "▀";
-                    else if (bottom) ascii += "▄";
-                    else ascii += " ";
+                    if (top && bottom) line += "<span>█</span>";
+                    else if (top) line += "<span>▀</span>";
+                    else if (bottom) line += "<span>▄</span>";
+                    // else line += "<span>\u00A0</span>";
+                    // else line += "<span>&nbsp;</span>";
+                    // else line += "<span>&#32;</span>";
+                    else line += "<span> </span>";
                 }
-                ascii += "\n";
+                asciiDisplay += line + "\n";
             }
-            document.getElementById('qr-ascii').textContent = ascii;
+            document.getElementById('qr-ascii').innerHTML = asciiDisplay;
         }
 
         function renderSVG(qr) {
