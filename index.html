@@ -37,7 +37,9 @@
             color:black;
             font-family: 'Courier New', monospace;
             /* line-height: 1.1; */
-            font-size: 14px;
+            font-size: clamp(8px, 2vw, 14px); 
+            overflow-x: auto;        
+            max-width: 100%;
             white-space: pre;
             display: none; /* Hidden by default */
         }
