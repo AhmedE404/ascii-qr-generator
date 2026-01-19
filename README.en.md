@@ -23,7 +23,7 @@ A lightweight, offline-first web tool that generates QR codes in **ASCII Text** 
 
 1. **Clone the repository:**
 ```bash
-   git clone [https://github.com/AhmedE404/ascii-qr-generator.git](https://github.com/AhmedE404/ascii-qr-generator.git)
+   git clone https://github.com/AhmedE404/ascii-qr-generator.git
 
 ```
 
