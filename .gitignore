@@ -1,0 +1,13 @@
+# Mac OS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows System Files
+Thumbs.db
+ehthumbs.db
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.sublime-workspace
